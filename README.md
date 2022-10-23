@@ -6,7 +6,7 @@ Deadline: Woche 24. Oktober
 
 Angaben zum Projekt:
 
-Teilnehmeranzahl: 1 Person
+Teilnehmeranzahl: 1 Person 
 Projektname: Safety
 Repro: https://github.com/JoergerLiliane/WebTechProjectSafety.git
 
@@ -15,11 +15,11 @@ Eine Safety Webapp, ursprünglich gedacht als Sicherheitsapp für Frauen. Kann j
 Der/die Nutzer/in kann Notfallnummern einspeichern, wie z.B. die Daten einer/mehrerer Vertrauenspersonen (VP).
 Nutzer/in kann die Daten der Polizei, Notruf, Krankenhaus etc. einspeichern.
 
-Nutzer/in kann über Google Search die Polizeistation suchen, die am nächsten gelegen ist, einspeichern oder verständigen.
-Bei einem Vorfall oder sollte sich der/die Nutzer/in einer bestimmten Situation  unwohl fühlen, kann er/sie durch die App sofort eine ALARM-SMS an die VP bzw. Polizei senden oder sofort ein Anruf/SOS Button tätigen.
+Nutzer/in kann über Google Search die Polizeistation suchen/eingeben, die am nächsten gelegen ist, einspeichern oder (verständigen, evtl. zu umfangreich).
+Bei einem Vorfall oder sollte sich der/die Nutzer/in einer bestimmten Situationen unwohl fühlen, kann er/sie durch die App sofort eine ALARM-SMS an die VP bzw. Polizei schreiben (senden, evtl. zu umfangreich) oder sofort ein Anruf/SOS Button tätigen.
 Diese Funktion kann genauso genutzt werden für den Fall, wenn eine andere Person in Lebensgefahr schwebt oder ernsthaft Hilfe benötigt.
-Diese Webapp ist im Weiteren auch als Mobile App enthalten und die Webapp dient zum einpflegen der Daten + der Erhalt einer Übersicht der Daten bzw.
-zur Einsicht darüber, wie oft Vorfälle aufgetreten sind oder wie oft und in welchen Fällen ein Alarm ausgelöst wurde.
+Diese Webapp ist im Weiteren auch als Mobile App enthalten und die Webapp dient zum einpflegen der Daten (bearbeiten, speichern und löschen der eigenen Daten & die Dtaen + der Erhalt einer Übersicht der Daten bzw.
+der VP/ Hilfsstelle (Polizei etc.). Es kann zur Einsicht darüber dienen, wie oft Vorfälle aufgetreten sind oder wie oft und in welchen Fällen ein Alarm/SMS geschrieben/gesendet/ausgelöst wurde.
 
 
 Nutzungsmöglichkeiten aus verschiedenen Sichten
