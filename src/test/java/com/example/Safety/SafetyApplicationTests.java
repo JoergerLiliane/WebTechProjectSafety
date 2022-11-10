@@ -8,7 +8,7 @@ class SafetyApplicationTests {
 
 	@Test
 	void contextLoads() {
-		throw new RuntimeExcepton("Only for test");
+
 	}
 
 }
