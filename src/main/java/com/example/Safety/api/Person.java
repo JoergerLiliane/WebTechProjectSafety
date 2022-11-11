@@ -6,16 +6,14 @@ public class Person {
    /* @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)*/
 
-    private int id;
+    private Long id;
     private String firstName;
     private String lastName;
     private int phoneNumber;
     private boolean guardian;
 
-
-
-
-    public Person(int id, String firstName, String lastName, int phoneNumber, boolean guardian) {
+    //Constructor
+    public Person(Long id, String firstName, String lastName, int phoneNumber, boolean guardian) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,14 +22,16 @@ public class Person {
     }
 
 
+
+
     // Getter & Setter
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
