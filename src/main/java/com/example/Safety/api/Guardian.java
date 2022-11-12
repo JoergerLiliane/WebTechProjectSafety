@@ -1,7 +1,7 @@
 package com.example.Safety.api;
 
 //@Entity
-public class Person {
+public class Guardian {
 
    /* @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)*/
@@ -10,18 +10,25 @@ public class Person {
     private String firstName;
     private String lastName;
     private int phoneNumber;
-    private boolean guardian;
+    private boolean isGuardian;
+    private int priorityLevel;
+
 
     //Constructor
-    public Person(Long id, String firstName, String lastName, int phoneNumber, boolean guardian) {
+    public Guardian(Long id, String firstName, String lastName, int phoneNumber, boolean isGuardian, int priorityLevel) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.guardian = guardian;
+        this.isGuardian = isGuardian;
+        this.priorityLevel = priorityLevel;
     }
 
+    public Guardian(String firstName, String lastName, int phoneNumber, boolean guardian, int priorityLevel) {
+    }
 
+    /*public Guardian(Long id, String firstName, String firstName1, int phoneNumber, boolean guardian) {
+    }*/
 
 
     // Getter & Setter
@@ -35,7 +42,7 @@ public class Person {
         this.id = id;
     }
 
-    public Person() {}
+    public Guardian() {}
 
     public String getFirstName() {
         return firstName;
@@ -64,16 +71,23 @@ public class Person {
     }
 
     public boolean isGuardian() {
-        return guardian;
+        return isGuardian;
     }
 
 
     public void setGuardian(boolean guardian) {
-        this.guardian = guardian;
+        this.isGuardian = guardian;
     }
 
 
 
+    public int getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    public void setPriorityLevel(int priorityLevel) {
+        this.priorityLevel = priorityLevel;
+    }
 
 
 

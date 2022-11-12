@@ -1,55 +1,18 @@
-package com.example.Safety.persistenceSQL;
+package com.example.Safety.api;
 
-import javax.persistence.*;
-
-@Entity (name = "persons")
-
-//Werte innerhalb der Spalte der SQL Tabelle Person
-public class PersonEntity {
-
-    //Automatische Schlüssel Generierung
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Erzeugen eines nummerischen Wert, welches hochzählt
-    @Column (name = "id")
-
-    private Long id;
-
-
-    @Column (name = "first_name", nullable = false)
-
+//Daten, welches der Client dem Server sendet, ohne ID
+public class GuardianCreateOrUpdateRequest {
     private String firstName;
-
-
-    @Column (name = "last_name", nullable = false)
     private String lastName;
-
-
-    @Column (name = "phone_number", nullable = false)
     private int phoneNumber;
-
-
-    @Column (name = "is_guardian", nullable = false)
     private boolean guardian;
 
-    //Für Hibernate Mapping
-    protected PersonEntity() {
-    }
-
-    //Constructor
-    public PersonEntity(String firstName, String lastName, int phoneNumber, boolean guardian) {
+    public GuardianCreateOrUpdateRequest(String firstName, String lastName, int phoneNumber, boolean guardian) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.guardian = guardian;
-
-
     }
-
-    //Getter & Setter
-    public Long getId() {
-        return id;
-    }
-
 
     public String getFirstName() {
         return firstName;
@@ -82,6 +45,7 @@ public class PersonEntity {
     public void setGuardian(boolean guardian) {
         this.guardian = guardian;
     }
+
 
 
 }
