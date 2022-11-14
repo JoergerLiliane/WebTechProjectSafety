@@ -50,7 +50,7 @@ public class GuardianRestController {
 
     //REST API: Resource löschen
     @DeleteMapping (path = "/api/v1/guardian/{id}")
-    public ResponseEntity<Guardian> deleteGuardian(@PathVariable Long id, @RequestBody GuardianCreateOrUpdateRequest request) {
+    public ResponseEntity<Guardian> deleteGuardian(@PathVariable Long id) {
         boolean successful = guardianService.deleteById (id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
