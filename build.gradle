@@ -24,6 +24,11 @@ dependencies {
 
 }
 
+//H2 Datenbankdateien Dependency
+dependencies {
+	// other dependencies...
+	runtimeOnly 'com.h2database:h2:2.1.214'
+}
 
 /*tasks.named('test') {
 	useJUnitPlatform()
