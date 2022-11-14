@@ -9,23 +9,31 @@ public class Guardian {
     private Long id;
     private String firstName;
     private String lastName;
+    private String gender;
     private int phoneNumber;
     private boolean isGuardian;
     private int priorityLevel;
+    private Long userId;
+
 
 
     //Constructor
-    public Guardian(Long id, String firstName, String lastName, int phoneNumber, boolean isGuardian, int priorityLevel) {
+    public Guardian(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isGuardian, int priorityLevel, Long userId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.isGuardian = isGuardian;
         this.priorityLevel = priorityLevel;
+        this.userId = userId;
+
+
     }
 
-    public Guardian(String firstName, String lastName, int phoneNumber, boolean guardian, int priorityLevel) {
-    }
+
+
+
 
     /*public Guardian(Long id, String firstName, String firstName1, int phoneNumber, boolean guardian) {
     }*/
@@ -42,7 +50,6 @@ public class Guardian {
         this.id = id;
     }
 
-    public Guardian() {}
 
     public String getFirstName() {
         return firstName;
@@ -61,6 +68,13 @@ public class Guardian {
         this.lastName = lastName;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getPhoneNumber() {
         return phoneNumber;
@@ -75,8 +89,8 @@ public class Guardian {
     }
 
 
-    public void setGuardian(boolean guardian) {
-        this.isGuardian = guardian;
+    public void setGuardian(boolean isGuardian) {
+        this.isGuardian = isGuardian;
     }
 
 
@@ -89,11 +103,15 @@ public class Guardian {
         this.priorityLevel = priorityLevel;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-
-
-   /* @Override
+/* @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Thing)) return false;
