@@ -1,13 +1,12 @@
 package com.example.Safety.persistenceSQL;
 
-import com.example.Safety.api.Guardian;
-import com.example.Safety.api.User;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity (name = "Users")
+@Entity (name = "Benutzer")
 public class UserEntity {
 
     //Automatische Schlüssel Generierung

@@ -1,6 +1,7 @@
 package com.example.Safety.api;
 import com.example.Safety.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,7 +16,7 @@ public class UserRestController {
         this.userService = userService;
     }
 
-    //Business Logik, Mapping in Klasse Service: Leseanfrage
+    //Business Logik, Mapping inh2-console/api/v1/user Klasse Service: Leseanfrage
     @GetMapping(path = "/api/v1/user")
     public ResponseEntity<List<User>> fetchUsers() {
         return ResponseEntity.ok(userService.findAll());
@@ -28,7 +29,7 @@ public class UserRestController {
         var user =  userService.create(request);
 
         URI uri = new URI("/api/v1/user/" + user.getId());
-        return ResponseEntity.created(uri).build();  //Location der neuen Ressource
+        return  ResponseEntity.created(uri).build();  //return userService.findById(user);  //Location der neuen Ressource
     }
 
 

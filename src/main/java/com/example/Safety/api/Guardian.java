@@ -3,9 +3,8 @@ package com.example.Safety.api;
 //@Entity
 public class Guardian {
 
-   /* @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
-
+    //@Id
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;

@@ -17,6 +17,9 @@ public class UserCreateOrUpdateRequest {
 
     }
 
+    public UserCreateOrUpdateRequest () {
+
+    }
 
 
     public String getFirstName() {

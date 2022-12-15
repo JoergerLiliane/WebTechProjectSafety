@@ -23,6 +23,10 @@ public class GuardianCreateOrUpdateRequest {
     }
 
 
+    public GuardianCreateOrUpdateRequest (){
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
