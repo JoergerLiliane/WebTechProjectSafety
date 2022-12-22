@@ -2,6 +2,7 @@ package com.example.Safety.api;
 import com.example.Safety.service.GuardianService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,7 +27,7 @@ public class GuardianRestController {
     //REST API: Resource anlegen mit Hilfe von HTTP Body/HTTP Post
     //Client sendet Server Daten (Schreibanfrage)
     @PostMapping (path = "/api/v1/guardian")
-    public ResponseEntity<Void> createGuardians(@RequestBody GuardianCreateOrUpdateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createGuardian( @RequestBody GuardianCreateOrUpdateRequest request) throws URISyntaxException {
        var guardian =  guardianService.create(request);
 
        URI uri = new URI("/api/v1/guardian/" + guardian.getId());
@@ -43,7 +44,7 @@ public class GuardianRestController {
 
 
     //REST API: Resource aktualisieren
-    @PutMapping  (path = "/localhost:8080/api/v1/guardian/{id}")
+    @PutMapping  (path = "/api/v1/guardian/{id}")
     public ResponseEntity<Guardian> updateGuardian(@PathVariable Long id, @RequestBody GuardianCreateOrUpdateRequest request) {
         var guardian =  guardianService.update(id, request);
         return guardian != null? ResponseEntity.ok(guardian) : ResponseEntity.notFound().build();

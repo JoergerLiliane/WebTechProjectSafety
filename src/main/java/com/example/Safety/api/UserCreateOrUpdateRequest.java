@@ -1,25 +1,33 @@
 package com.example.Safety.api;
+import java.util.List;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class UserCreateOrUpdateRequest {
-    private String firstName;
-    private String lastName;
+
+
+
+        @Size(min = 3, message = "Please provide a first name with 3 characters or more.")
+        private String firstName;
+
+        @NotBlank(message = "The last name must not be empty.")
+        private String lastName;
+
+
+        @Pattern(
+                regexp = "MALE|FEMALE|DIVERSE|UNKOWN",
+                message = "Please provide 'MALE', 'FEMALE', 'DIVERSE' or 'UNKNOWN' for gender"
+        )
+
+
     private String gender;
+    private List<Long> guardianId;
     private int phoneNumber;
     private boolean user;
 
-
-    public UserCreateOrUpdateRequest(String firstName, String lastName, String gender, int phoneNumber, boolean user) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.user = user;
-
-    }
-
-    public UserCreateOrUpdateRequest () {
-
-    }
+    public UserCreateOrUpdateRequest () {}
 
 
     public String getFirstName() {
@@ -61,6 +69,14 @@ public class UserCreateOrUpdateRequest {
 
     public void setUser(boolean user) {
         this.user = user;
+    }
+
+    public List<Long> getGuardianId() {
+        return guardianId;
+    }
+
+    public void setGuardianId(List<Long> guardianId) {
+        this.guardianId = guardianId;
     }
 
 }

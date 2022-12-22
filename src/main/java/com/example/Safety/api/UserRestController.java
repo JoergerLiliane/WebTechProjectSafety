@@ -2,7 +2,10 @@ package com.example.Safety.api;
 import com.example.Safety.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -25,7 +28,7 @@ public class UserRestController {
     //REST API: Resource anlegen mit Hilfe von HTTP Body/HTTP Post
     //Client sendet Server Daten (Schreibanfrage)
     @PostMapping(path = "/api/v1/user")
-    public ResponseEntity<Void> createUsers(@RequestBody UserCreateOrUpdateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createUser(@Valid @RequestBody UserCreateOrUpdateRequest request) throws URISyntaxException {
         var user =  userService.create(request);
 
         URI uri = new URI("/api/v1/user/" + user.getId());

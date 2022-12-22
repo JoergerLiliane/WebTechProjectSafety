@@ -12,15 +12,6 @@ public class GuardianCreateOrUpdateRequest {
     private int priorityLevel;
     private Long userId;
 
-    public GuardianCreateOrUpdateRequest(String firstName, String lastName, String gender, int phoneNumber, boolean guardian, int priorityLevel, Long userId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.guardian = guardian;
-        this.priorityLevel =priorityLevel;
-        this.userId=userId;
-    }
 
 
     public GuardianCreateOrUpdateRequest (){
