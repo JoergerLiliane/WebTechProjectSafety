@@ -48,10 +48,10 @@ public class UserService {
         var userEntity = new UserEntity(
                 request.getFirstName(),
                 request.getLastName(),
-                gender,
-                request.getPhoneNumber(),
+                gender);
+              /*  request.getPhoneNumber(),
                 request.isUser());
-        ;
+        ;*/
 
         userEntity = userRepository.save(userEntity);  //personEntity ohne ID
         //Service-Rückgabe der Person Entity an Client, welche eingegeben wird plus ID nach automatischer
@@ -74,8 +74,8 @@ public class UserService {
         userEntity.setFirstName(request.getFirstName());
         userEntity.setLastName(request.getLastName());
         userEntity.setGender(Gender.valueOf(request.getGender()));
-        userEntity.setPhoneNumber(request.getPhoneNumber());
-        userEntity.setUser(request.isUser());
+       /* userEntity.setPhoneNumber(request.getPhoneNumber());
+        userEntity.setUser(request.isUser());*/
 
 
         userEntity = userRepository.save(userEntity); //personEntity mit ID

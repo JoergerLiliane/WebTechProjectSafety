@@ -29,11 +29,11 @@ public class UserEntity {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    @Column (name = "phone_number_user", nullable = false)
+    @Column (name = "phone_number_user", nullable = true)
     private int phoneNumber;
 
 
-    @Column (name = "is_user", nullable = false)
+    @Column (name = "is_user", nullable = true)
     private boolean isUser;
 
     //1:N Beziehung = User können mehrere Guardians haben
@@ -45,12 +45,11 @@ public class UserEntity {
 
 
     //Constructor
-    public UserEntity(String firstName, String lastName, Gender gender, int phoneNumber, boolean isUser) {
+    public UserEntity(String firstName, String lastName, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.isUser = isUser;
+
 
 
     }

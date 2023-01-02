@@ -4,11 +4,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
+@Validated
 public class GuardianRestController {
 
     //private  List <Person> persons;  //Instanzvariable
@@ -27,7 +30,7 @@ public class GuardianRestController {
     //REST API: Resource anlegen mit Hilfe von HTTP Body/HTTP Post
     //Client sendet Server Daten (Schreibanfrage)
     @PostMapping (path = "/api/v1/guardian")
-    public ResponseEntity<Void> createGuardian( @RequestBody GuardianCreateOrUpdateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createGuardian( @Valid @RequestBody GuardianCreateOrUpdateRequest request) throws URISyntaxException {
        var guardian =  guardianService.create(request);
 
        URI uri = new URI("/api/v1/guardian/" + guardian.getId());

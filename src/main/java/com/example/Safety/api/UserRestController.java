@@ -10,7 +10,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+
 @RestController
+@Validated
 public class UserRestController {
 
     private final UserService userService;
@@ -20,6 +22,7 @@ public class UserRestController {
     }
 
     //Business Logik, Mapping inh2-console/api/v1/user Klasse Service: Leseanfrage
+    //@ResponseBody
     @GetMapping(path = "/api/v1/user")
     public ResponseEntity<List<User>> fetchUsers() {
         return ResponseEntity.ok(userService.findAll());
@@ -37,6 +40,7 @@ public class UserRestController {
 
 
     //REST API:  Ressource lesen = Client fragt Daten an
+    //@ResponseBody
     @GetMapping (path = "/api/v1/user/{id}")
     public ResponseEntity <User> fetchUsersById(@PathVariable Long id) {
         var user =  userService.findById(id);
@@ -53,7 +57,7 @@ public class UserRestController {
 
     //REST API: Resource löschen
     @DeleteMapping (path = "/api/v1/user/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable Long id, @RequestBody UserCreateOrUpdateRequest request) {
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         boolean successful = userService.deleteById (id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }

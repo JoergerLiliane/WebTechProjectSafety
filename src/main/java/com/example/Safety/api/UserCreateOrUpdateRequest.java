@@ -1,5 +1,4 @@
 package com.example.Safety.api;
-import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -15,17 +14,29 @@ public class UserCreateOrUpdateRequest {
         @NotBlank(message = "The last name must not be empty.")
         private String lastName;
 
+        private String gender;
 
-        @Pattern(
+
+         @Pattern(
                 regexp = "MALE|FEMALE|DIVERSE|UNKOWN",
                 message = "Please provide 'MALE', 'FEMALE', 'DIVERSE' or 'UNKNOWN' for gender"
+
         )
+        @Size(min = 3, message = "Please provide a password with 3 characters or more.")
+        private String password;
 
 
-    private String gender;
-    private List<Long> guardianId;
-    private int phoneNumber;
-    private boolean user;
+
+         @Pattern(
+                 regexp ="Germany|France|Italy|Spain|Portugal|South Africa|Untited States|United Kingdom",
+                 message = "Please choose a valid country.")
+         private String country;
+
+       /* private int phoneNumber;
+        private boolean isUser;
+        private List<Long> guardianId;*/
+
+
 
     public UserCreateOrUpdateRequest () {}
 
@@ -55,28 +66,21 @@ public class UserCreateOrUpdateRequest {
         this.gender = gender;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public boolean isUser() {
-        return user;
+    public String getCountry() {
+        return country;
     }
 
-    public void setUser(boolean user) {
-        this.user = user;
+    public void setCountry(String country) {
+        this.country = country;
     }
-
-    public List<Long> getGuardianId() {
-        return guardianId;
-    }
-
-    public void setGuardianId(List<Long> guardianId) {
-        this.guardianId = guardianId;
-    }
-
 }
