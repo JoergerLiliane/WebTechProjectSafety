@@ -48,7 +48,11 @@ public class UserService {
         var userEntity = new UserEntity(
                 request.getFirstName(),
                 request.getLastName(),
-                gender);
+                gender,
+                request.getCountry(),
+                request.getUserName(),
+                request.getPassword()
+                );
               /*  request.getPhoneNumber(),
                 request.isUser());
         ;*/
@@ -105,7 +109,10 @@ public class UserService {
                 gender,
                 userEntity.getPhoneNumber(),
                 userEntity.isUser(),
-                guardianId
+                guardianId,
+                userEntity.getCountry(),
+                userEntity.getUserName(),
+                userEntity.getPassword()
 
         );
 

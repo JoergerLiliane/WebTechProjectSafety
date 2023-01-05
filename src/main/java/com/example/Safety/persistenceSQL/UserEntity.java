@@ -36,6 +36,16 @@ public class UserEntity {
     @Column (name = "is_user", nullable = true)
     private boolean isUser;
 
+    @Column (name = "country", nullable = true)
+    private String country;
+
+    @Column (name = "userName", nullable = false)
+    private String userName;
+
+    @Column (name = "passWord", nullable = false)
+    private String password;
+
+
     //1:N Beziehung = User können mehrere Guardians haben
     @OneToMany (mappedBy = "user", fetch = FetchType.EAGER)
     private List<GuardianEntity> guardian = new ArrayList<>();
@@ -44,11 +54,16 @@ public class UserEntity {
     //Für Hibernate Mapping
 
 
+
     //Constructor
-    public UserEntity(String firstName, String lastName, Gender gender) {
+    public UserEntity(String firstName, String lastName, Gender gender, String country, String userName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.country= country;
+        this.userName= userName;
+        this.password=password;
+
 
 
 
@@ -115,5 +130,28 @@ public class UserEntity {
     }
 
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }

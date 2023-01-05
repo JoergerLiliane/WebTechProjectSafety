@@ -14,24 +14,23 @@ public class UserCreateOrUpdateRequest {
         @NotBlank(message = "The last name must not be empty.")
         private String lastName;
 
+
+        @Pattern(
+                regexp = "MALE|FEMALE|DIVERSE|UNKOWN",
+                message = "Please provide 'MALE', 'FEMALE', 'DIVERSE' or 'UNKNOWN' for gender.")
         private String gender;
 
 
-         @Pattern(
-                regexp = "MALE|FEMALE|DIVERSE|UNKOWN",
-                message = "Please provide 'MALE', 'FEMALE', 'DIVERSE' or 'UNKNOWN' for gender"
 
-        )
-        @Size(min = 3, message = "Please provide a password with 3 characters or more.")
-        private String password;
+         @Size(min = 3, message = "Please provide a username with 3 characters or more.")
+        private String userName;
 
 
+        @Size(min = 5, message = "Please choose a password with 3 characters or more.")
+         private String password;
 
-         @Pattern(
-                 regexp ="Germany|France|Italy|Spain|Portugal|South Africa|Untited States|United Kingdom",
-                 message = "Please choose a valid country.")
-         private String country;
 
+        private String country;
        /* private int phoneNumber;
         private boolean isUser;
         private List<Long> guardianId;*/
@@ -66,6 +65,13 @@ public class UserCreateOrUpdateRequest {
         this.gender = gender;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
 
     public String getPassword() {
@@ -76,6 +82,8 @@ public class UserCreateOrUpdateRequest {
         this.password = password;
     }
 
+
+
     public String getCountry() {
         return country;
     }
@@ -83,4 +91,5 @@ public class UserCreateOrUpdateRequest {
     public void setCountry(String country) {
         this.country = country;
     }
+
 }

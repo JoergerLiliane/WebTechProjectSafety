@@ -14,12 +14,14 @@ public class User {
     private int phoneNumber;
     private boolean isUser;
     private List<Long> guardianId;
-
+    private String country;
+    private String userName;
+    private String password;
 
 
 
     //Constructor
-    public User(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isUser, List<Long> guardianId) {
+    public User(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isUser, List<Long> guardianId, String country, String userName, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +29,9 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.isUser = isUser;
         this.guardianId = guardianId;
-
+        this.country= country;
+        this.userName = userName;
+        this.password = password;
 
 
     }
@@ -97,5 +101,29 @@ public class User {
 
     public void setGuardianId(List<Long> guardianId) {
         this.guardianId = guardianId;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return password;
+    }
+
+    public void setPassWord(String passWord) {
+        this.password = passWord;
     }
 }
