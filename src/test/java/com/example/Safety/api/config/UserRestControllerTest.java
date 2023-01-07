@@ -44,23 +44,16 @@ class UserRestControllerTest {
 
 
     @Test
-    @DisplayName("should return found users from user service")
+    @DisplayName("should return found user in the List")
     void should_return_found_user_from_user_service() throws Exception {
         //Actual
 
-        var userEntity = Mockito.mock(UserEntity.class);
-
-        //List<Long> guardianId = new ArrayList<>();
-        // guardianId.add(null);
-        // var user = test.fetchUsers();
-        //doReturn(List.of(new GuardianEntity())).when(userEntity).getGuardianId();
-
 
         var users = List.of(
-                new User(6L, "Karla", "Jörger", "FEMALE", 0, false, "Germany",  "karlaj", "#123456789")
-                //new User(6L, "Karla", "Jörger", "FEMALE", 0, false, null, "Germany",  "karlaj", "#123456789")
-        );
+                new User(6L, "Karla", "Jörger"),
+                new User(12L, "Lili", "Jörger")
 
+        );
 
         doReturn(users).when(userService).findAll();
 
@@ -68,16 +61,13 @@ class UserRestControllerTest {
         mockMvc.perform(get("/api/v1/user"))
                 // then
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()").value(1))
-                .andExpect(jsonPath("$[0].id").value(6))
+                .andExpect(jsonPath("$.size()").value(2))
+                .andExpect(jsonPath("$[0].id").value(6L))
                 .andExpect(jsonPath("$[0].firstName").value("Karla"))
                 .andExpect(jsonPath("$[0].lastName").value("Jörger"))
-                .andExpect(jsonPath("$[0].gender").value("FEMALE"))
-                .andExpect(jsonPath("$[0].phoneNumber").value(0))
-                .andExpect(jsonPath("$[0].isUser").value(false))
-                .andExpect(jsonPath("$[0].country").value("Germany"))
-                .andExpect(jsonPath("$[0].userName").value("karlaj"))
-                .andExpect(jsonPath("$[0].password").value("#123456789"));
+                .andExpect(jsonPath("$[1].id").value(12L))
+                .andExpect(jsonPath("$[2].firstName").value("Lili"))
+                .andExpect(jsonPath("$[3].lastName").value("Jörger"));
     }
 
 
@@ -136,7 +126,7 @@ class UserRestControllerTest {
         //Actual
         User user1 = new User(6L, "Karla", "Jörger");
         user1.setId(6L);
-        when(userService.findById(42L)).thenReturn(user1);
+        when(userService.findById(6L)).thenReturn(user1);
 
         //Expected: GET - Request
         String expected = "{\"id\":6,\"firstName\":\"Karla\",\"lastName\":\"Jörger\"}";

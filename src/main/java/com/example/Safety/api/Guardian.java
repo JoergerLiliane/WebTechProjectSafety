@@ -33,6 +33,17 @@ public class Guardian {
 
     }
 
+    //Constructor for the Test: GuardianServiceTest
+
+    public Guardian(Long id, String firstName, String lastName, String gender, int phoneNumber) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+
+    }
+
 
 
 

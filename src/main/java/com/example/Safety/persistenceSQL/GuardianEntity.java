@@ -34,10 +34,10 @@ public class GuardianEntity {
     private int phoneNumber;
 
 
-    @Column (name = "is_guardian", nullable = false)
+    @Column (name = "is_guardian", nullable = true)
     private boolean isGuardian;
 
-    @Column (name = "priorityLevel_guardian", nullable = false)
+    @Column (name = "priorityLevel_guardian", nullable = true)
     private int priorityLevel;
 
     //N:1 Beziehung = Guardian kann nur 1 User haben

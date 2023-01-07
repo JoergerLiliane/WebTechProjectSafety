@@ -1,6 +1,9 @@
 package com.example.Safety.service;
-import com.example.Safety.api.User;
-import com.example.Safety.persistenceSQL.UserRepository;
+
+import com.example.Safety.api.Guardian;
+
+import com.example.Safety.persistenceSQL.GuardianRepository;
+
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,20 +11,22 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.Optional;
+
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class UserServiceTest implements WithAssertions {
+class GuardianServiceTest implements WithAssertions {
 
     @Mock
-    private UserRepository repository;
+    private GuardianRepository repository;
 
     @InjectMocks
-    private UserService test;
+    private GuardianService test;
 
    /* @Autowired
     private UserService service;
@@ -34,7 +39,7 @@ class UserServiceTest implements WithAssertions {
     @DisplayName("should return true if delete was successful")
     void should_return_true_if_delete_was_successful() {
         //Actual
-        Long givenId = 6L;
+        Long givenId = 33L;
         doReturn(true).when(repository).existsById(givenId);
 
         //Expected
@@ -46,8 +51,8 @@ class UserServiceTest implements WithAssertions {
     }
 
     @Test
-    @DisplayName("should return false if user to delete does not exist")
-    void should_return_false_if_user_to_delete_does_not_exist() {
+    @DisplayName("should return false if guardian to delete does not exist")
+    void should_return_false_if_guardian_to_delete_does_not_exist() {
         //Actual
         Long givenId = 6L;
         doReturn(false).when(repository).existsById(givenId);
@@ -65,18 +70,18 @@ class UserServiceTest implements WithAssertions {
 
 
     @Test
-    @DisplayName("should find a user by  id")
-    void testUserId() {
+    @DisplayName("should find a Guardian by  id")
+    void testGuardianId() {
         //Actual
 
-        var user1 = new User(6L, "Karla", "Jörger", "FEMALE", 0, false, null, "Germany",  "karlaj", "123456789");
-        doReturn(Optional.of(user1)).when(repository).findById(6L);
+        var guardian1 = new Guardian(33L, "Liliane", "Jörger", "FEMALE", 122);
+        doReturn(Optional.of(guardian1)).when(repository).findById(33L);
 
         //Expected: Get - Request
-        User actual = test.findById(6L);
+        Guardian actual = test.findById(33L);
 
         //Comparing Actual and Expected
-        assertEquals(actual.getFirstName(), "Karla");
+        assertEquals(actual.getFirstName(), "Liliane");
     }
 
 
