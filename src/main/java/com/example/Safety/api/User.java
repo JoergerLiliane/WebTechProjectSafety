@@ -19,6 +19,8 @@ public class User {
     private String password;
 
 
+    public User() {
+    }
 
     //Constructor
     public User(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isUser, List<Long> guardianId, String country, String userName, String password) {
@@ -34,6 +36,73 @@ public class User {
         this.password = password;
 
 
+    }
+
+
+    //Constructor for UserRestControllerTest
+
+    public User(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isUser, String country, String userName, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.isUser = isUser;
+        this.country= country;
+        this.userName = userName;
+        this.password = password;
+
+    }
+
+
+    //Constructor for UserRestControllerTest
+
+    public User(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
+    }
+
+    //Constructor for UserTest
+    public User(String firstName, String lastName, int phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+
+    }
+
+
+    //Method for UserTest: Inspo Github von Herrn Wider
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getPhoneNumber() != user.getPhoneNumber()) return false;
+        if (getId() != null ? !getId().equals(user.getId()) : user.getId() != null) return false;
+        return getFirstName() != null ? getLastName().equals(user.getFirstName()) : user.getLastName() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getFirstName() != null ? getLastName().hashCode() : 0);
+        result = 31 * result + getPhoneNumber();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phonNumber=" + phoneNumber +
+                '}';
     }
 
 

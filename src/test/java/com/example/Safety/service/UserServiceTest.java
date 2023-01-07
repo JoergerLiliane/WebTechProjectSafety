@@ -37,14 +37,14 @@ class UserServiceTest implements WithAssertions {
     @Test
     @DisplayName("should return true if delete was successful")
     void should_return_true_if_delete_was_successful() {
-        // given
+        //Actual
         Long givenId = 6L;
         doReturn(true).when(repository).existsById(givenId);
 
-        // when
+        //Expected
         boolean result = test.deleteById(givenId);
 
-        // then
+        //Comparing Actual and Expected
         verify(repository).deleteById(givenId);
         assertThat(result).isTrue();
     }
@@ -52,14 +52,14 @@ class UserServiceTest implements WithAssertions {
     @Test
     @DisplayName("should return false if person to delete does not exist")
     void should_return_false_if_user_to_delete_does_not_exist() {
-        // given
+        //Actual
         Long givenId = 6L;
         doReturn(false).when(repository).existsById(givenId);
 
-        // when
+        // Expected
         boolean result = test.deleteById(givenId);
 
-        // then
+        //Comparing Actual and Expected
         verifyNoMoreInteractions(repository);
         assertThat(result).isFalse();
     }
@@ -70,13 +70,16 @@ class UserServiceTest implements WithAssertions {
 
     @Test
     @DisplayName("should find a user by  id")
-    void thisTestGet() {
+    void testUserId() {
+        //Actual
+
         var user1 = new User(6L, "Karla", "Jörger", "FEMALE", 0, false, null, "Germany",  "karlaj", "123456789");
         doReturn(Optional.of(user1)).when(repository).findById(6L);
 
-
+        //Expected: Get - Request
         User actual = test.findById(6L);
 
+        //Comparing Actual and Expected
         assertEquals(actual.getFirstName(), "Karla");
     }
 

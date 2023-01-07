@@ -21,13 +21,14 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import org.assertj.core.api.WithAssertions;
 
 
@@ -45,7 +46,7 @@ class UserRestControllerTest {
     @Test
     @DisplayName("should return found users from user service")
     void should_return_found_user_from_user_service() throws Exception {
-        // given
+        //Actual
 
         var userEntity = Mockito.mock(UserEntity.class);
 
@@ -56,14 +57,14 @@ class UserRestControllerTest {
 
 
         var users = List.of(
-                new User(6L, "Karla", "Jörger", "FEMALE", 0, false, null, "Germany",  "karlaj", "123456789")
-
+                new User(6L, "Karla", "Jörger", "FEMALE", 0, false, "Germany",  "karlaj", "#123456789")
+                //new User(6L, "Karla", "Jörger", "FEMALE", 0, false, null, "Germany",  "karlaj", "#123456789")
         );
 
 
         doReturn(users).when(userService).findAll();
 
-        // when Get Methode
+        //Expected: Get - Request
         mockMvc.perform(get("/api/v1/user"))
                 // then
                 .andExpect(status().isOk())
@@ -74,7 +75,6 @@ class UserRestControllerTest {
                 .andExpect(jsonPath("$[0].gender").value("FEMALE"))
                 .andExpect(jsonPath("$[0].phoneNumber").value(0))
                 .andExpect(jsonPath("$[0].isUser").value(false))
-                .andExpect(jsonPath("$[0].guardianId").value(null))
                 .andExpect(jsonPath("$[0].country").value("Germany"))
                 .andExpect(jsonPath("$[0].userName").value("karlaj"))
                 .andExpect(jsonPath("$[0].password").value("#123456789"));
@@ -84,60 +84,68 @@ class UserRestControllerTest {
     @Test
     @DisplayName("should return 404 if user is not found")
     void should_return_404_if_user_is_not_found() throws Exception {
-        // given
+        //Actual
         doReturn(null).when(userService).findById(anyLong());
 
-        // when
-        mockMvc.perform(get("/api/v1/user/400"))
-                // then
-                .andExpect(status().isNotFound());
+        //Expected: GET - Request  +   //Comparing Actual and Expected
+        mockMvc.perform(get("/api/v1/user/1000")).andExpect(status().isNotFound());
     }
+
 
     @Test
     @DisplayName("should return 201 http status and Location header when creating a user")
     void should_return_201_http_status_and_location_header_when_creating_a_user() throws Exception {
-        // given
-        String userToCreateAsJson = "{\"firstName\": \"Maria\", \"lastName\":\"Jörger\", \"gender\":\"FEMALE\", \"phoneNUmber\": 0,\"isUser\":false,  \"country\":\"France\",\"userName\":\"karlamj\"}";
-      // var user = new User(400L, null, null, null, 0, false, null, null, null, null);
-       // doReturn(user).when(userService).create(any());
+        //Actual
+        String userToCreateAsJson = "{\"id\":400,\"firstName\":\"Maria\",\"lastName\":\"Jörger\"}";
+       var user = new User(400L,"Maria","Jörger");
+       doReturn(user).when(userService).create(any());
 
-        // when
-       // mockMvc.perform(
-                       // post("/api/v1/user")
-                             //   .contentType(MediaType.APPLICATION_JSON)
-                               // .content(userToCreateAsJson)
-                //)
-                // then
-                //.andExpect(status().isCreated())
-               // .andExpect(header().exists("Location"))
-              //  .andExpect(header().string("Location", Matchers.equalTo(("/api/v1/persons/" + user.getId()))));
-//            .andExpect(header().string("Location", Matchers.containsString(Long.toString(person.getId()))));
+        //Expected: POST - Request
+       mockMvc.perform(
+                       post("/api/v1/user")
+                              .contentType(MediaType.APPLICATION_JSON).content(userToCreateAsJson)
+                )
+
+               //Comparing Actual and Expected
+                .andExpect(status().isCreated())
+               .andExpect(header().exists("Location"))
+               .andExpect(header().string("Location", Matchers.equalTo(("/api/v1/persons/" + user.getId()))));
+            //     .andExpect(header().string("Location", Matchers.containsString(Long.toString(person.getId()))));
 
     }
 
     @Test
     @DisplayName("should validate create user request")
     void should_validate_create_user_request() throws Exception {
-        // given
-        String personToCreateAsJson = "{\"firstName\": \"a\", \"lastName\":\"\", \"gender\":\"MALE\", \"phoneNumber\"0}";
+        //Actual
+        String userToCreateAsJson = "{\"id\":200,\"firstName\":\"Bernd\",\"lastName\":\"V\"}";
 
-        // when
+        //Expected: POST - Request
         mockMvc.perform(
                         post("/api/v1/user")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(personToCreateAsJson)
+                                .content(userToCreateAsJson)
                 )
-                // then
+                //Comparing Actual and Expected
                 .andExpect(status().isBadRequest());
     }
 
 
     @Test
-    @DisplayName("should return user finById ")
-    void should_return_found_user() throws Exception {
+    public void testFinfByIdRoute() throws Exception {
+        //Actual
+        User user1 = new User(6L, "Karla", "Jörger");
+        user1.setId(6L);
+        when(userService.findById(42L)).thenReturn(user1);
 
+        //Expected: GET - Request
+        String expected = "{\"id\":6,\"firstName\":\"Karla\",\"lastName\":\"Jörger\"}";
 
-
+        //Comparing Actual and Expected
+        this.mockMvc.perform(get("/user/6"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string(containsString(expected)));
     }
 
 

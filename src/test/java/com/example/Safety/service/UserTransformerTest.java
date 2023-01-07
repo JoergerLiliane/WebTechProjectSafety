@@ -20,7 +20,7 @@ public class UserTransformerTest implements WithAssertions {
     @Test
     @DisplayName("should transformUserEntity to User")
     void should_transform_user_entity_to_user() {
-        // given
+        //Actual
 
         var userEntity = Mockito.mock(UserEntity.class);
         doReturn(6L).when(userEntity).getId();
@@ -36,10 +36,10 @@ public class UserTransformerTest implements WithAssertions {
 
 
 
-        // when
+        //Expected
         var user = test.entityIntoUser(userEntity);
 
-        // then
+        //Comparing Actual and Expected
         assertThat(user.getId()).isEqualTo(6L);
         assertThat(user.getFirstName()).isEqualTo("Karla");
         assertThat(user.getLastName()).isEqualTo("Jörger");
