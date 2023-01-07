@@ -78,8 +78,8 @@ public class UserService {
         userEntity.setFirstName(request.getFirstName());
         userEntity.setLastName(request.getLastName());
         userEntity.setGender(Gender.valueOf(request.getGender()));
-       /* userEntity.setPhoneNumber(request.getPhoneNumber());
-        userEntity.setUser(request.isUser());*/
+        userEntity.setPhoneNumber(request.getPhoneNumber());
+        //userEntity.setUser(request.isUser());
 
 
         userEntity = userRepository.save(userEntity); //personEntity mit ID
@@ -96,6 +96,7 @@ public class UserService {
         userRepository.deleteById(id);
         return true;
     }
+
 
 
 }

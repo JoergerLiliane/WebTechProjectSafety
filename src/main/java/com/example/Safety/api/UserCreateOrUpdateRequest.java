@@ -21,19 +21,22 @@ public class UserCreateOrUpdateRequest {
         private String gender;
 
 
+         private  int phoneNumber;
+
+
+        private String country;
+
 
          @Size(min = 3, message = "Please provide a username with 3 characters or more.")
         private String userName;
 
 
-        @Size(min = 5, message = "Please choose a password with 3 characters or more.")
+
+        @Size(min = 3, message = "Please choose a password with 3 characters or more.")
          private String password;
 
 
-        private String country;
-       /* private int phoneNumber;
-        private boolean isUser;
-        private List<Long> guardianId;*/
+
 
 
 
@@ -65,6 +68,26 @@ public class UserCreateOrUpdateRequest {
         this.gender = gender;
     }
 
+
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+
     public String getUserName() {
         return userName;
     }
@@ -84,12 +107,6 @@ public class UserCreateOrUpdateRequest {
 
 
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
 }
