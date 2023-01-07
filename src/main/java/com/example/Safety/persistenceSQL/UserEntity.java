@@ -48,7 +48,7 @@ public class UserEntity {
 
     //1:N Beziehung = User können mehrere Guardians haben
     @OneToMany (mappedBy = "user", fetch = FetchType.EAGER)
-    private List<GuardianEntity> guardian = new ArrayList<>();
+    public List<GuardianEntity> guardianId = new ArrayList<>();
 
 
     //Für Hibernate Mapping
@@ -121,12 +121,12 @@ public class UserEntity {
         this.isUser = user;
     }
 
-    public List<GuardianEntity> getGuardian() {
-        return guardian;
+    public List<GuardianEntity> getGuardianId() {
+        return guardianId;
     }
 
-    public void setGuardian(List<GuardianEntity> guardian) {
-        this.guardian = guardian;
+    public void setGuardianId(List<GuardianEntity> guardianId) {
+        this.guardianId = guardianId;
     }
 
 

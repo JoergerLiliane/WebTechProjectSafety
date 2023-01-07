@@ -38,8 +38,6 @@ public class User {
 
 
 
-
-
     // Getter & Setter
 
     public Long getId() {

@@ -18,11 +18,13 @@ public class GuardianService {
 
     private final GuardianRepository guardianRepository;
     private final UserRepository userRepository;
+    private final UserTransformer userTransformer;
 
 
-    public GuardianService(GuardianRepository guardianRepository, UserRepository userRepository) {
+    public GuardianService(GuardianRepository guardianRepository, UserRepository userRepository, UserTransformer userTransformer) {
         this.guardianRepository = guardianRepository;
         this.userRepository = userRepository;
+        this.userTransformer = userTransformer;
     }
 
 
@@ -113,7 +115,8 @@ public class GuardianService {
                 guardianEntity.getPhoneNumber(),
                 guardianEntity.isGuardian(),
                 guardianEntity.getPriorityLevel(),
-                guardianEntity.getUser().getId()
+                guardianEntity.getUser().getId(),
+                userTransformer.entityIntoUser(guardianEntity.getUser())
 
 
         );

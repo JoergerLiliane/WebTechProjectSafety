@@ -13,11 +13,13 @@ public class Guardian {
     private boolean isGuardian;
     private int priorityLevel;
     private Long userId;
+    private User user;
+
 
 
 
     //Constructor
-    public Guardian(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isGuardian, int priorityLevel, Long userId) {
+    public Guardian(Long id, String firstName, String lastName, String gender, int phoneNumber, boolean isGuardian, int priorityLevel, Long userId,  User user) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,6 +28,7 @@ public class Guardian {
         this.isGuardian = isGuardian;
         this.priorityLevel = priorityLevel;
         this.userId = userId;
+        this.user = user;
 
 
     }
@@ -110,33 +113,12 @@ public class Guardian {
         this.userId = userId;
     }
 
-/* @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Thing)) return false;
-
-        Thing thing = (Thing) o;
-
-        if (getPrice() != thing.getPrice()) return false;
-        if (getId() != null ? !getId().equals(thing.getId()) : thing.getId() != null) return false;
-        return getName() != null ? getName().equals(thing.getName()) : thing.getName() == null;
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + getPrice();
-        return result;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-    @Override
-    public String toString() {
-        return "Thing{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    } */
 
 }

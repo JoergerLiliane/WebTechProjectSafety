@@ -1,9 +1,7 @@
 package com.example.Safety.service;
-import com.example.Safety.api.GuardianCreateOrUpdateRequest;
 import com.example.Safety.api.User;
 import com.example.Safety.api.UserCreateOrUpdateRequest;
 import com.example.Safety.persistenceSQL.Gender;
-import com.example.Safety.persistenceSQL.GuardianEntity;
 import com.example.Safety.persistenceSQL.UserEntity;
 import com.example.Safety.persistenceSQL.UserRepository;
 import org.springframework.stereotype.Service;
@@ -16,17 +14,19 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserTransformer userTransformer;
 
 
-    public UserService(UserRepository userRepository ) {
+    public UserService(UserRepository userRepository, UserTransformer userTransformer) {
         this.userRepository = userRepository;
+        this.userTransformer = userTransformer;
     }
 
 
     public List<User> findAll() {
         List<UserEntity> users = userRepository.findAll();
         return users.stream()
-                .map(this::entityIntoUser)
+                .map(userTransformer::entityIntoUser)
                 .collect(Collectors.toList());
 // (this::entityIntoGuardian)
     }
@@ -35,9 +35,9 @@ public class UserService {
 
     public User findById(Long id) {
         var userEntity = userRepository.findById(id);
-        //return guardianEntity.isPresent()? entityIntoGuardian(guardianEntity.get()) : null;
+       //return guardianEntity.isPresent()? entityIntoGuardian(guardianEntity.get()) : null;
 
-        return userEntity.map(this::entityIntoUser).orElse(null); //Bestehender Datensatz aus der Datenbank
+        return userEntity.map(userTransformer::entityIntoUser).orElse(null); //Bestehender Datensatz aus der Datenbank
     }
 
 
@@ -60,7 +60,7 @@ public class UserService {
         userEntity = userRepository.save(userEntity);  //personEntity ohne ID
         //Service-Rückgabe der Person Entity an Client, welche eingegeben wird plus ID nach automatischer
         // ID Generierung von Springboot
-        return entityIntoUser(userEntity);
+        return userTransformer.entityIntoUser(userEntity);
     }
 
 
@@ -84,7 +84,7 @@ public class UserService {
 
         userEntity = userRepository.save(userEntity); //personEntity mit ID
 
-        return entityIntoUser(userEntity); //Aktualisierte personEntity
+        return userTransformer.entityIntoUser(userEntity); //Aktualisierte personEntity
     }
 
 
@@ -97,29 +97,5 @@ public class UserService {
         return true;
     }
 
-    //Mappen einer Entity in einer User
 
-    private User entityIntoUser(UserEntity userEntity) {
-        var guardianId = userEntity.getGuardian().stream().map(GuardianEntity::getId).collect(Collectors.toList());
-        var gender = userEntity.getGender() != null ? userEntity.getGender().name() : Gender.UNKNOWN.name();
-        return new User(
-                userEntity.getId(),
-                userEntity.getFirstName(),
-                userEntity.getLastName(),
-                gender,
-                userEntity.getPhoneNumber(),
-                userEntity.isUser(),
-                guardianId,
-                userEntity.getCountry(),
-                userEntity.getUserName(),
-                userEntity.getPassword()
-
-        );
-
-
-
-
-
-
-    }
 }
