@@ -73,27 +73,7 @@ public class User {
     }
 
 
-    //Method for UserTest: Inspo Github von Herrn Wider
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
-        User user = (User) o;
-
-        if (getPhoneNumber() != user.getPhoneNumber()) return false;
-        if (getId() != null ? !getId().equals(user.getId()) : user.getId() != null) return false;
-        return getFirstName() != null ? getLastName().equals(user.getFirstName()) : user.getLastName() == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getFirstName() != null ? getLastName().hashCode() : 0);
-        result = 31 * result + getPhoneNumber();
-        return result;
-    }
+    //UserTest: Inspo Github von Herrn Wider
 
     @Override
     public String toString() {

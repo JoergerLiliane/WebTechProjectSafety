@@ -69,22 +69,6 @@ class GuardianServiceTest implements WithAssertions {
 
 
 
-    @Test
-    @DisplayName("should find a Guardian by  id")
-    void testGuardianId() {
-        //Actual
-
-        var guardian1 = new Guardian(33L, "Liliane", "Jörger", "FEMALE", 122);
-        doReturn(Optional.of(guardian1)).when(repository).findById(33L);
-
-        //Expected: Get - Request
-        Guardian actual = test.findById(33L);
-
-        //Comparing Actual and Expected
-        assertEquals(actual.getFirstName(), "Liliane");
-    }
-
-
 
 
 

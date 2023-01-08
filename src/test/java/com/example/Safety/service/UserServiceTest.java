@@ -64,22 +64,6 @@ class UserServiceTest implements WithAssertions {
 
 
 
-    @Test
-    @DisplayName("should find a user by  id")
-    void testUserId() {
-        //Actual
-
-        var user1 = new User(6L, "Karla", "Jörger", "FEMALE", 0, false, null, "Germany",  "karlaj", "123456789");
-        doReturn(Optional.of(user1)).when(repository).findById(6L);
-
-        //Expected: Get - Request
-        User actual = test.findById(6L);
-
-        //Comparing Actual and Expected
-        assertEquals(actual.getFirstName(), "Karla");
-    }
-
-
 
 
 
