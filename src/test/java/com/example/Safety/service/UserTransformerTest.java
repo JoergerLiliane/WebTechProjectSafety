@@ -1,5 +1,4 @@
 package com.example.Safety.service;
-
 import com.example.Safety.persistenceSQL.Gender;
 import com.example.Safety.persistenceSQL.GuardianEntity;
 import com.example.Safety.persistenceSQL.UserEntity;
