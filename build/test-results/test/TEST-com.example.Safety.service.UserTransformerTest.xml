@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.Safety.service.UserTransformerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-08T00:51:21" hostname="MacBook-Air-von-Liliane.local" time="0.926">
+<testsuite name="com.example.Safety.service.UserTransformerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-08T01:05:27" hostname="MacBook-Air-von-Liliane.local" time="0.865">
   <properties/>
-  <testcase name="should transformUserEntity to User" classname="com.example.Safety.service.UserTransformerTest" time="0.926"/>
+  <testcase name="should transformUserEntity to User" classname="com.example.Safety.service.UserTransformerTest" time="0.865"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
