@@ -33,14 +33,14 @@ Nutzung/Funktionen/REST Schnittstellen
 
 User/Nutzer/in
   registrieren, um die App nutzen zu können: -> POST Request: ein Profil erstellen + Anzeigefunktionen (Form/Button)
-  einloggen, um auf sein Profil zu kommen:   -> GET Request: erneute Abfrage, der bei der hinterlegten Daten + Anzeigefunktionen (Profilbild+Form+Button)
--> Darstellung:Array von User
-  persönlichen Daten ändern:                 -> PUT Request: hinterlegte Daten ändern + Anzeigefunktionen (Settings+Button)
+  einloggen, um auf sein Profil zu kommen:   -> GET Request: erneute Abfrage, der hinterlegten Daten + Anzeigefunktionen (Profilbild+Form+Button)
+-> Darstellung:Array von Users
+  persönliche Daten ändern:                 -> PUT Request: hinterlegte Daten ändern + Anzeigefunktionen (Settings+Button)
   Profil löschen:                            -> DELETE Request: hinterlegte Daten löschen + Anzeigefunktionen (Buttons)
   Kann eine/mehrere VP(en) hinzufügen:       -> POST Request:Guardian(s) Profil(e) mit bestimmten Daten erstellt + Anzeigefunktionen (Profilbild+Settings+Buttons)
--> Darstellung:Array von User                                          
+-> Darstellung:Array von Guardians                                          
                                              -> GET Request: erneute Abfrage, der bei der hinterlegten Daten + Anzeigefunktionen (Profilbild+Form+Button)
   Kann Daten der VP(en) ändern:              -> PUT Request: hinterlegte Daten ändern + Anzeigefunktionen (Settings+Buttons)
   Kann Daten der VP(en) ändern:              -> DELETE Request: hinterlegte Daten löschen + Anzeigefunktionen (Buttons)
-  Kann seine Live location sehen:            -> Öffentliche API, nur halb Optimal: sollte nur auf der eigenen Webseite sehen können (Nur zur Demonstration)
+  Kann seine Live location sehen:            -> Öffentliche API, nur halb optimal: sollte nur auf der eigenen Webseite zu sehen sein (Nur zur Demonstration)
 
