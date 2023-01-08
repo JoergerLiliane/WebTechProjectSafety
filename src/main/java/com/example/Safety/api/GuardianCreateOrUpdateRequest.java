@@ -22,16 +22,14 @@ public class GuardianCreateOrUpdateRequest {
 
 
     @Pattern(
-            regexp = "MALE|FEMALE|DIVERSE|UNKOWN",
+            regexp = "MALE|FEMALE|DIVERSE|UNKNOWN",
             message = "Please provide 'MALE', 'FEMALE', 'DIVERSE' or 'UNKNOWN' for gender"
 
     )
 
 
 
-    @Pattern(
-            regexp ="Germany|France|Italy|Spain|Portugal|South Africa|Untited States|United Kingdom",
-            message = "Please choose a valid country.")
+
     private String country;
 
     public GuardianCreateOrUpdateRequest (){

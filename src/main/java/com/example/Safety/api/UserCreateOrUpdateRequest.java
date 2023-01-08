@@ -16,7 +16,7 @@ public class UserCreateOrUpdateRequest {
 
 
         @Pattern(
-                regexp = "MALE|FEMALE|DIVERSE|UNKOWN",
+                regexp = "MALE|FEMALE|DIVERSE|UNKNOWN",
                 message = "Please provide 'MALE', 'FEMALE', 'DIVERSE' or 'UNKNOWN' for gender.")
         private String gender;
 
